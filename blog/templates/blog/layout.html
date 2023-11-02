@@ -16,7 +16,9 @@
 
     <body>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-            <a class="navbar-brand" href="{% url 'index' %}">Blog App</a>
+            <a class="navbar-brand " href="{% url 'index' %}"> Skull
+                <img class="skull-emoji" src="{% static 'blog/skull.ico' %}" alt="" height="25" width="20"> Post
+            </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb"
                 aria-expanded="true">
                 <span class="navbar-toggler-icon"></span>
@@ -26,12 +28,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_post' %}">Create a Post</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Page 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Page 2</a>
-                    </li> -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search for posts" aria-label="Search" name="search">

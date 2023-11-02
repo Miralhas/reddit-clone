@@ -32,3 +32,8 @@ a:hover span {
 .vote-down:hover {
     color: red;
 }
+
+.skull-emoji{
+    position: relative;
+    bottom: 3px
+}
