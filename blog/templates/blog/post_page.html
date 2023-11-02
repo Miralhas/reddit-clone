@@ -1,0 +1,53 @@
+{% extends 'blog/layout.html' %}
+
+{% block body %}
+<div class="container-fluid" style="width: 90%;">
+    {% if request.user == post.owner %}
+        <div style="margin-bottom: 10px;">
+            <a href="{% url 'edit_post' post.pk 'edit' %}"><button class="btn btn-outline-primary btn-sm" style="margin-right: 4px;">Edit Post</button></a>
+            <a href="{% url 'edit_post' post.pk 'delete' %}"><button class="btn btn-outline-danger btn-sm">Delete Post</button></a>
+        </div>
+    {% endif %}
+    <p>
+        Owner: <strong>{{post.owner}}</strong>
+        Created: <strong>{{post.date_published}}</strong>
+    </p>
+    <div style="margin-bottom: 10px; padding: 10px 10px 0px 10px;">
+        <h1 style="margin-bottom: 10px;">{{post.title}}</h1>
+    </div>
+    <hr color="#676869">
+    <div style="padding-left: 25px; width: 60%;">
+        <p>{{post.content}}</p>
+    </div>
+    <hr color="#676869">
+    {% if request.user.is_authenticated %}
+        <div>
+            <form action="{% url 'post_page' post.pk %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="postContent" style="font-size: 14px;">Comentar como <strong>{{request.user}}</strong></label>
+                    <textarea id="text-area" style="width: 35%;" class="form-control" id="postContent" rows="5" name="postComment" placeholder="No que estás a pensar?" required></textarea>
+                    <button type="submit" class="btn btn-light" style="margin-top: 7px;">Comentar</button>
+                </div>
+            </form>
+        </div>
+        <hr color="#676869">
+    {% endif %}
+    <div style="width: 40%;">
+        <h4>Comentários:</h4>
+        {% for comment in comments %}
+            <p>
+                <strong>{{comment.user}}</strong>
+                <i style="font-size: 13px; color: #d7dadc; margin-right: 5px;">{{comment.comment_date}}</i>
+                {% if request.user == post.owner or request.user == comment.user %}
+                    <a href="{% url 'delete_comment' comment.pk %}" ><span class="fas fa-trash vote-down"></span></a>
+                {% endif %}
+                <br>
+                <span style="margin-left: 10px; color: #d7dadc; display: block;">{{comment.text}}</span>
+            </p>
+            {% empty %}
+                <p>Nenhum comentário.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

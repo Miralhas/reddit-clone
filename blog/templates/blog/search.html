@@ -1,0 +1,41 @@
+{% extends 'blog/layout.html' %}
+
+{% block body %}
+<div class="container-fluid" style="width: 90%;">
+    <h1 style="margin-bottom: 30px;">Posts</h1>
+    {% for post in search_posts %}
+        <div class="row align-items-center" style="margin-bottom: 10px;">
+            <div class="col-1-sm text-center" style="margin-top: 7px;">
+                <div>
+                    <a href="{% url 'post_vote' post.pk 'up_vote' %}"><span class="fas fa-arrow-up vote-up"></span></a>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <span>{{post.votes}}</span>
+                    <div class="w-100 d-none d-md-block"></div>
+                    <a href="{% url 'post_vote' post.pk 'down_vote' %}"><span class="fas fa-arrow-down vote-down"></span></a>
+                </div>
+            </div>
+            <div class="col-11">
+                <a href="{% url 'post_page' post.pk %}">
+                    <div style="padding-top: 10px; border-bottom: 1px solid white; width: 40%;">
+                        <h4>{{post.title}}</h4>
+                        <p>
+                            Owner: <strong>{{post.owner}}</strong>
+                            Created: <strong>{{post.date_published}}</strong> <br>
+                            <span class="far fa-comment-alt" style="margin-right: 3px;"></span>
+                            {% if post.comments.all|length == 1 %}
+                                <i style="font-size: 13px; color: #d7dadc;">{{post.comments.all|length}} Comentário</i>
+                            {% else %}
+                                <i style="font-size: 13px; color: #d7dadc;">{{post.comments.all|length}} Comentários</i>
+                            {% endif %}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+            <p>Nenhum resultado para <strong>{{user_input}}</strong>. <br>
+            <span style="font-size: 13px; color: #d7dadc;">Tente verificar a ortografia ou usar termos mais genéricos</span></p>
+    {% endfor %}
+</div>
+    
+{% endblock %}

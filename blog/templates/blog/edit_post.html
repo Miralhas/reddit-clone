@@ -1,0 +1,18 @@
+{% extends 'blog/layout.html' %}
+
+{% block body %}
+    <div style="width: 40%;" class="container">
+            <form action="{% url 'edit_post' post.pk 'edit' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="postTitle">Post Title</label>
+                    <input type="text" class="form-control" id="postTitle" placeholder="Title" name="newPostTitle" value="{{post.title}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Post Content</label>
+                    <textarea class="form-control" id="postContent" rows="10" name="newPostContent" required>{{post.content}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
+{% endblock %}

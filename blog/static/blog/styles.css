@@ -1,0 +1,34 @@
+body {
+    background-color: #212529;
+}
+
+label, h1, h2, h3, h4, p, span{
+    color: white;
+}
+
+.form-control {
+    background-color: #212529;
+    border: 1px solid grey;
+    color: #d7dadc;
+}
+
+.form-control:focus {
+    background-color: #212529;
+    color: #d7dadc;
+}
+
+a span {
+    transition: all 0.3s linear;
+}
+
+a:hover span {
+    transform: scale(1.2);
+}
+
+.vote-up:hover {
+    color: green;
+}
+
+.vote-down:hover {
+    color: red;
+}
