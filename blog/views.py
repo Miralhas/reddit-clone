@@ -91,7 +91,7 @@ def delete_comment(request, comment_pk):
 
     return HttpResponseRedirect(reverse("post_page", args=(post.pk, )))
 
-    
+@login_required(login_url="/login")
 def post_vote(request, post_pk, direction):
     post = Post.objects.get(pk=post_pk)
     if direction == "up_vote":
