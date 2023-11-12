@@ -24,10 +24,13 @@
 	<br>
 - **Post Voting:**
 	- Users can upvote or downvote posts. The vote count for each post is displayed and updated accordingly.
+    <br>
 - **Search Functionality:**
 	- Users can search for posts based on their title. The search results are displayed on a separate page.
+    <br>
 - **User Profiles:**
 	- Each user has a profile page that displays their owned posts.
+    <br>
 
 ## Installation and Running the Project
 To install and run this project locally, follow these steps:
@@ -65,4 +68,3 @@ Now, you can visit `http://localhost:8000` in your browser to view the applicati
 ## 📝 License
 
 Copyright © 2023 **[Victor Miralhas](https://github.com/Miralhas)**.<br />
-
